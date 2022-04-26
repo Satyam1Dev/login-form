@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #navbar {
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(35, 209, 151);
+        padding: 30px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      #navbar a:hover {
+        color: white;
+      }
+      #navbar a {
+        cursor: pointer;
+      }
+      /* div form {padding: 30px;} */
+      input#user {
+    padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+input#email{
+  padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+input#pass{
+  padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+
+.container {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 20%;
+    padding: 40px;
+    margin: auto;
+}
+#fild {
+    margin: 20px;
+}
+#pass {
+    margin: 20px;
+}
+#email {
+    margin: 20px;
+}
+input[type="submit"] {
+  width: 93%;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid red;
+    /* font-size: 15px; */
+    font-weight: 700;
+    margin-left: 20px;
+    margin-top: 14px;
+}
+    </style>
+  </head>
+  <body>
+   <div class="container">
+      <div id="navbar">      
+        <div><a href="sinup.html">Signup</a></div>
+        <div><a href="index.html">Login</a></div>
+      </div>
+      <h1>Signup Here</h1>
+      <form>
+        <div id="fild"> <input id="user" type="text" placeholder="Enter name" /></div>
+       <div> <input id="email" type="text" placeholder="Enter email" /></div>     
+       <div>   <input id="pass" type="password" placeholder="Enter password" /></div>
+       
+    
+        <input type="submit" />
+      </form>
+   </div>
+  </body>
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", signUpFun);
+
+  var userData = JSON.parse(localStorage.getItem("userCreds"))||[]
+  function signUpFun() {
+    event.preventDefault();
+
+    var userObj = {
+      email: document.querySelector("#email").value,
+      password: document.querySelector("#pass").value,
+      userName: document.querySelector("#user").value,
+    };
+    //console.log(userObj);
+    userData.push(userObj);
+    //console.log(userData)
+    localStorage.setItem("userCreds",JSON.stringify(userData))
+
+  }
+</script>
